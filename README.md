@@ -3,6 +3,10 @@ package-brunch
 
 A brunch in order to include the package of the pack.
 
+## Installation
+
+`npm install --save package-brunch` , and it will be runned by brunch.
+
 ## Configuration
 
 In your brunch config file: `config.coffee`, you can customize the pluin behaviour:
