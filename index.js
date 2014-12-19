@@ -37,7 +37,7 @@
     PackageBrunch.prototype.onCompile = function(generatedFiles) {
       var filePath, fileString, packageInfos;
       packageInfos = require("" + __dirname + '/../../' + this.options.fileSource);
-      filePath = path.join(this.config.paths["public"], this.options.fileName);
+      filePath = path.join(this.config.paths["public"], "javascripts", this.options.fileName);
       fileString = "window." + this.options.nameSpace + " = window." + this.options.nameSpace + " ||{}; window." + this.options.nameSpace + ".package = " + (JSON.stringify(this.options.fileTransform(packageInfos), null, 2)) + ";";
       fs.writeFileSync(filePath, fileString);
     };
