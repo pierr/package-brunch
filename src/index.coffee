@@ -27,7 +27,7 @@ class PackageBrunch
   # Handler executed on compilation
   onCompile: (generatedFiles) ->
     packageInfos = require("#{__dirname}#{'/../../'}#{@options.fileSource}")
-    filePath = path.join(@config.paths.public, @options.fileName)
+    filePath = path.join(@config.paths.public,"javascripts", @options.fileName)
     fileString = "
       window.#{@options.nameSpace} = window.#{@options.nameSpace} ||{};
       window.#{@options.nameSpace}.package = #{JSON.stringify(@options.fileTransform(packageInfos), null, 2)};
