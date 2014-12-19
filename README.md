@@ -14,6 +14,14 @@ In your brunch config file: `config.coffee`, you can customize the pluin behavio
 | nameSpace     | string   | The namespace into which the file will be added in the window object.         | app                                |
 | fileTransform | function | A transformation function you want to apply to the string source of the file. | `function(source){return source;}` |
 
+- Example in the `config.coffee`: 
+```coffee
+  plugins:
+    package:
+      fileName: "myApp.version.js"
+      nameSpace: "myApp"
+```
+
 ## TODO
  Implement a xml version in order to build a file from server.xml conf.
 
