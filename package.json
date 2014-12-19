@@ -1,6 +1,6 @@
 {
   "name": "package-brunch",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Short plugin to add a version.js file.",
   "main": "index.js",
   "scripts": {
