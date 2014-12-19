@@ -14,8 +14,11 @@ class PackageBrunch
 
     # Defaults options
     @options = {
-      externalFile: undefined
       fileName: 'package.js'
+      fileSource: "package.json"
+      nameSpace: "app",
+      fileTransform: 
+        (data)-> return data
     }
 
     # Merge config
@@ -23,9 +26,13 @@ class PackageBrunch
     @options[k] = cfg[k] for k of cfg
   # Handler executed on compilation
   onCompile: (generatedFiles) ->
-    packageInfos = require(__dirname + 'package.json')
+    packageInfos = require("#{__dirname}#{'/../../'}#{@options.fileSource}")
     filePath = path.join(@config.paths.public, @options.fileName)
-    fs.writeFileSync(filePath, JSON.stringify(packageInfos))
+    fileString = "
+      window.#{@options.nameSpace} = window.#{@options.nameSpace} ||{};
+      window.#{@options.nameSpace}.package = #{JSON.stringify(@options.fileTransform(packageInfos), null, 2)};
+    "
+    fs.writeFileSync(filePath, fileString);
 
     return
 ###
